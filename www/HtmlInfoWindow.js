@@ -46,7 +46,8 @@ var HTMLInfoWindow = function () {
       delete callbackTable[target.hashCode][eventName];
     }
   };
-
+  
+  self.close = self.close.bind(self);
   Object.defineProperty(self, '_hook', {
     value: listenerMgr,
     writable: false

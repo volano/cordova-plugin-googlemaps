@@ -1425,16 +1425,32 @@ Map.prototype.addMarkerCluster = function(markerClusterOptions, callback) {
 
   self.exec.call(self, function(result) {
 
-    result.geocellList.forEach(function(geocell, idx) {
-      var markerOptions = markerClusterOptions.markers[idx];
-      markerOptions = common.markerOptionsFilter(markerOptions);
+    if (result.geocellList != null) {
+      result.geocellList.forEach(function(geocell, idx) {
+        var markerOptions = markerClusterOptions.markers[idx];
+        markerOptions = common.markerOptionsFilter(markerOptions);
 
-      markerOptions._cluster = {
-        isRemoved: false,
-        isAdded: false,
-        geocell: geocell
-      };
-      markerCluster.addMarker(markerOptions);
+        markerOptions._cluster = {
+          isRemoved: false,
+          isAdded: false,
+          geocell: geocell
+        };
+        markerCluster.addMarker(markerOptions);
+
+        //self.MARKERS[marker.getId()] = marker;
+        //self.OVERLAYS[marker.getId()] = marker;
+      });
+    }
+    // result.geocellList.forEach(function(geocell, idx) {
+    //   var markerOptions = markerClusterOptions.markers[idx];
+    //   markerOptions = common.markerOptionsFilter(markerOptions);
+
+    //   markerOptions._cluster = {
+    //     isRemoved: false,
+    //     isAdded: false,
+    //     geocell: geocell
+    //   };
+    //   markerCluster.addMarker(markerOptions);
 
       //self.MARKERS[marker.getId()] = marker;
       //self.OVERLAYS[marker.getId()] = marker;
