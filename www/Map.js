@@ -1454,7 +1454,7 @@ Map.prototype.addMarkerCluster = function(markerClusterOptions, callback) {
 
       //self.MARKERS[marker.getId()] = marker;
       //self.OVERLAYS[marker.getId()] = marker;
-    });
+    // });
 
 
     markerCluster.one('remove', function() {
